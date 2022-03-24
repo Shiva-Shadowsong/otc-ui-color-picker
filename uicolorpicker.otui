@@ -1,0 +1,95 @@
+ColorPickerNode < UIWidget
+  height: 40
+  phantom: true
+  Label
+    id: description
+    anchors.left: parent.left
+    anchors.top: parent.top
+    font: verdana-11px-rounded
+  phantom: true
+  Label
+    id: value
+    anchors.left: prev.right
+    margin-left: 5
+    anchors.verticalCenter: prev.verticalCenter
+    font: verdana-11px-rounded
+    phantom: true
+  HorizontalScrollBar
+    id: slider
+    anchors.top: description.bottom
+    anchors.left: description.left
+    anchors.right: parent.right
+    margin-top: 6
+    step: 1
+    minimum: 0
+    maximum: 255
+    value: 255
+    show-value: true
+    @onValueChange: self:setText(self:getValue())
+
+ColorPicker < UIColorPicker
+  border: 2 #25495A
+  width: 300
+  height: 200
+  padding-top: 10
+  image-source: /images/ui/window/windowContent
+  image-border: 5
+  image-border-top: 22
+  @onEscape: self:close()
+  @onSetup: self:initialize()
+  UIWidget
+    id: colorPreviewer
+    anchors.right: parent.right
+    anchors.top: parent.top
+    size: 71 71
+    background-color: #FFFFFF
+    margin-right: 10
+  TextEdit
+    id: hexcode
+    anchors.left: colorPreviewer.left
+    anchors.right: colorPreviewer.right
+    anchors.top: colorPreviewer.bottom
+    margin-top: 5
+    max-length: 9
+    cursor-visible: false
+  Button
+    id: applyHexButton
+    text: Use Hex
+    anchors.left: hexcode.left
+    anchors.right: hexcode.right
+    anchors.top: hexcode.bottom
+    margin-top: 5
+  ColorPickerNode
+    id: red
+    anchors.right: colorPreviewer.left
+    anchors.top: colorPreviewer.top
+    anchors.left: parent.left
+    margin-left: 10
+    margin-right: 10
+  ColorPickerNode
+    id: green
+    anchors.left: prev.left
+    anchors.right: prev.right
+    anchors.top: prev.bottom
+    margin-top: 6
+  ColorPickerNode
+    id: blue
+    anchors.left: prev.left
+    anchors.right: prev.right
+    anchors.top: prev.bottom
+    margin-top: 6
+  ColorPickerNode
+    id: alpha
+    anchors.left: prev.left
+    anchors.right: prev.right
+    anchors.top: prev.bottom
+    margin-top: 6
+  Button
+    id: doneButton
+    text: Done
+    anchors.left: applyHexButton.left
+    anchors.right: applyHexButton.right
+    anchors.bottom: alpha.bottom
+    margin-top: 25
+    color: #3cc85d
+    image-color: #3cc85d
