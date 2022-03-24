@@ -24,7 +24,7 @@ Swap this out for the location of a window content background that your client u
 local picker = g_ui.createWidget('ColorPicker', rootWidget)
 connect(picker, {
   onClose = function(self, selectedColor)
-    print("The color picked in the window before it was closed was: " .. pickedColor)
+    print("The color picked in the window before it was closed was: " .. selectedColor)
   end
 })
 ~~~
